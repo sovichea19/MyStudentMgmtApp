@@ -2,11 +2,13 @@ package edu.mum.cs.cs425.studentmgmt.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,7 +16,7 @@ import javax.persistence.Table;
 public class Student {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int studentId;
+	private Long studentId;
 	
 	@Column(name="StudentNumber", nullable=false)
 	private String studentNumber;
@@ -34,6 +36,17 @@ public class Student {
 	@Column(name="DateOfEnrollment", nullable=false)
 	private LocalDate dateOfEnrollment;
 	
+	@OneToOne(mappedBy = "student", cascade = CascadeType.ALL)	
+	private Transcript transcript;
+	
+	public Transcript getTranscript() {
+		return transcript;
+	}
+
+	public void setTranscript(Transcript transcript) {
+		this.transcript = transcript;
+	}
+
 	public Student(String studentNumber, String firstName, String middleName, String lastName, float cgpa,
 			LocalDate dateOfEnrollment) {
 		super();
@@ -45,11 +58,11 @@ public class Student {
 		this.dateOfEnrollment = dateOfEnrollment;
 	}
 
-	public int getStudentId() {
+	public Long getStudentId() {
 		return studentId;
 	}
 
-	public void setStudentId(int studentId) {
+	public void setStudentId(Long studentId) {
 		this.studentId = studentId;
 	}
 
