@@ -34,10 +34,9 @@ public class Student {
 	@Column(name="DateOfEnrollment", nullable=false)
 	private LocalDate dateOfEnrollment;
 	
-	public Student(int studentId, String studentNumber, String firstName, String middleName, String lastName, float cgpa,
+	public Student(String studentNumber, String firstName, String middleName, String lastName, float cgpa,
 			LocalDate dateOfEnrollment) {
 		super();
-		this.studentId = studentId;
 		this.studentNumber = studentNumber;
 		this.firstName = firstName;
 		this.middleName = middleName;
