@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,6 +40,10 @@ public class Student {
 	
 	@OneToOne(mappedBy = "student", cascade = CascadeType.ALL)	
 	private Transcript transcript;
+	
+	@ManyToOne
+	@JoinColumn(name = "classroom_fk", nullable = true)
+	private Classroom classroom;
 	
 	public Transcript getTranscript() {
 		return transcript;
@@ -120,6 +126,15 @@ public class Student {
 				+ ", middleName=" + middleName + ", lastName=" + lastName + ", cgpa=" + cgpa + ", dateOfEnrollment="
 				+ dateOfEnrollment + "]";
 	}
+
+	public Classroom getClassroom() {
+		return classroom;
+	}
+
+	public void setClassroom(Classroom classroom) {
+		this.classroom = classroom;
+	}
+
 	
 	
 	

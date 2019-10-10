@@ -44,6 +44,11 @@ public class Transcript {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
+
+	@Override
+	public String toString() {
+		return "Transcript [degreeTitle=" + degreeTitle + "]";
+	}
 	
 	
 
